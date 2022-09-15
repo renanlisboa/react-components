@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Box, IconButton, useTheme } from "@mui/material"
+import { Tooltip, IconButton, useTheme } from "@mui/material"
 import { Add, Remove } from '@mui/icons-material';
-import { Text, Tooltip } from '.';
+import { Box, Text} from '.';
 
 type InputSpinnerProps = {
   color?: "inherit" |
@@ -41,7 +41,7 @@ export function InputSpinner({ onChange, value = 1, color }: InputSpinnerProps) 
       width={140}
       gap={2}
     >
-      <Tooltip title="Remove">
+      <Tooltip title="Remove" arrow>
       <IconButton
         color={color ?? 'primary'}
         onClick={handleDecreaseValue}
@@ -56,7 +56,7 @@ export function InputSpinner({ onChange, value = 1, color }: InputSpinnerProps) 
       >
         {inputValue}
       </Text>
-      <Tooltip title="Add">
+      <Tooltip title="Add" arrow>
         <IconButton
           color={color ?? 'primary'}
           onClick={handleIncreaseValue}

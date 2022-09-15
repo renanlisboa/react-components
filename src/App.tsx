@@ -7,10 +7,11 @@ import {
   createTheme,
   Container,
 } from "@mui/material";
-import { Check } from "@mui/icons-material";
+import { Check, AccessAlarm } from "@mui/icons-material";
 
 import { useSnackbarContext } from "./contexts";
 import {
+  Box,
   Stack,
   Grid,
   GridItem,
@@ -27,7 +28,6 @@ import {
   CheckboxGroup,
   Switch,
   Chip,
-  Tooltip,
   Divider,
   Button,
   Snackbar,
@@ -253,7 +253,7 @@ const App: React.FC = () => {
               <TabPanel value={tabIndex} index={1}>
                 <Stack gap={5}>
                   <Grid container spacing={4} alignItems="center">
-                    <GridItem item xs={3}>
+                    <GridItem item xs={4}>
                       <Button
                         variant="outlined"
                         color="primary"
@@ -268,19 +268,14 @@ const App: React.FC = () => {
                       </Button>
                       <Snackbar />
                     </GridItem>
-                    <GridItem item xs={3}>
-                      <Chip label="Success" color="success" size="small" />
-                    </GridItem>
-                    <GridItem item xs={3}>
+                    <GridItem item xs={4}>
                       <InputSpinner
                         value={quantity}
                         onChange={handleInputSpinnerChange}
                       />
                     </GridItem>
-                    <GridItem item xs={3}>
-                      <Tooltip title="Tooltip">
-                        <Button>Tooltip</Button>
-                      </Tooltip>
+                    <GridItem item xs={4}>
+                      <Chip label="Success" color="success" size="small" />
                     </GridItem>
                   </Grid>
                   <Divider />
