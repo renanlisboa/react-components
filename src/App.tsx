@@ -6,14 +6,14 @@ import {
   CssBaseline,
   createTheme,
   Container,
-  Stack,
-  Grid,
-  Button as MuiButton,
 } from "@mui/material";
 import { Check } from "@mui/icons-material";
 
 import { useSnackbarContext } from "./contexts";
 import {
+  Stack,
+  Grid,
+  GridItem,
   Card,
   CardActions,
   Heading,
@@ -92,21 +92,21 @@ const App: React.FC = () => {
     for (let i = 1; i <= length; i++) {
       const object = {
         id: i,
-        label: `Item ${i}`
-      }
-      items.push(object)
+        label: `Item ${i}`,
+      };
+      items.push(object);
     }
     return items;
   }
 
   function handleInputSpinnerChange(value: number) {
-    setQuantity(value)
+    setQuantity(value);
   }
 
   function handleSubmit(data: FormData) {
     setTabIndex(1);
     console.log(data);
-  };
+  }
 
   const theme = useMemo(() => {
     return createTheme(getCustomTheme(themeMode), ptBR);
@@ -153,158 +153,140 @@ const App: React.FC = () => {
                 </Stack>
               </Card>
             </Stack>
-            <Grid container spacing={4}>
-              <Grid item xs={12}>
-                <Tabs
-                  tabList={[
-                    {
-                      tabLabel: "Form Components",
-                      tabIndex: 1,
-                    },
-                    {
-                      tabLabel: "Other Components",
-                      tabIndex: 2,
-                    },
-                  ]}
-                  labelTextTransform="uppercase"
-                  onChange={(_, newValue) => setTabIndex(newValue)}
-                  value={tabIndex}
-                >
-                  <TabPanel value={tabIndex} index={0}>
-                    <Card title="Register">
-                      <Form
-                        validationSchema={FormDataSchema}
-                        onSubmit={handleSubmit}
-                      >
-                        <Stack gap={4}>
-                          <Grid container spacing={2}>
-                            <Grid item xs={3}>
-                              <Input
-                                name="name"
-                                label="Name"
-                              />
-                            </Grid>
-                            <Grid item xs={3}>
-                              <Input id="email" name="email" label="E-mail" />
-                            </Grid>
-                            <Grid item xs={3}>
-                              <Input
-                                name="currency"
-                                label="Currency $"
-                                mask="currency"
-                              />
-                            </Grid>
-                            <Grid item xs={3}>
-                              <Input
-                                name="percentage"
-                                label="Percentage %"
-                                mask="percentage"
-                              />
-                            </Grid>
-                          </Grid>
-                          <Grid container spacing={2} alignItems="center">
-                            <Grid item xs={6}>
-                              <Autocomplete
-                                name="skills"
-                                multiple
-                                options={options}
-                                getOptionLabel={(option) => option.label}
-                                isOptionEqualToValue={(option, value) =>
-                                  option.label === value.label
-                                }
-                                renderInput={(props) => (
-                                  <Input
-                                    name="skills"
-                                    label="Skills"
-                                    {...props}
-                                  />
-                                )}
-                              />
-                            </Grid>
-                            <Grid item xs={3}>
-                              <Select
-                                name="creditcard"
-                                label="Credit Card"
-                                options={selectOptions}
-                              />
-                            </Grid>
-                            <Grid item xs={3}>
-                              <DatePicker
-                                name="date"
-                                label="Date"
-                              />
-                            </Grid>
-                          </Grid>
-                          <Grid container spacing={4}>
-                            <Grid item xs={12}>
-                              <CheckboxGroup
-                                name="items"
-                                label="Items"
-                                options={checkBoxItems}
-                              />
-                            </Grid>
-                          </Grid>
-                          <Grid container spacing={4}>
-                            <Grid item xs={3}>
-                              <Switch
-                                name="active"
-                                label="Active"
-                                size="medium"
-                              />
-                            </Grid>
-                          </Grid>
-                          <CardActions>
-                            <Button
-                              type="submit"
-                              color="primary"
-                              startIcon={<Check />}
-                            >
-                              Save
-                            </Button>
-                          </CardActions>
-                        </Stack>
-                      </Form>
-                    </Card>
-                  </TabPanel>
-                  <TabPanel value={tabIndex} index={1}>
-                    <Stack gap={5}>
-                      <Grid container spacing={4} alignItems="center">
-                        <Grid item xs={3}>
-                          <Button
-                            variant="outlined"
-                            color="primary"
-                            onClick={() =>
-                              snackbarNotify({
-                                message: "this is a success message",
-                                severity: "success",
-                              })
-                            }
-                          >
-                            Open Snackbar
-                          </Button>
-                          <Snackbar />
-                        </Grid>
-                        <Grid item xs={3}>
-                          <Chip label="Success" color="success" size="small" />
-                        </Grid>
-                        <Grid item xs={3}>
-                          <InputSpinner
-                            value={quantity}
-                            onChange={handleInputSpinnerChange}
+            <Tabs
+              tabList={[
+                {
+                  tabLabel: "Form Components",
+                  tabIndex: 1,
+                },
+                {
+                  tabLabel: "Other Components",
+                  tabIndex: 2,
+                },
+              ]}
+              labelTextTransform="uppercase"
+              onChange={(_, newValue) => setTabIndex(newValue)}
+              value={tabIndex}
+            >
+              <TabPanel value={tabIndex} index={0}>
+                <Card title="Register">
+                  <Form
+                    validationSchema={FormDataSchema}
+                    onSubmit={handleSubmit}
+                  >
+                    <Stack gap={4}>
+                      <Grid container spacing={2}>
+                        <GridItem item xs={3}>
+                          <Input name="name" label="Name" />
+                        </GridItem>
+                        <GridItem item xs={3}>
+                          <Input id="email" name="email" label="E-mail" />
+                        </GridItem>
+                        <GridItem item xs={3}>
+                          <Input
+                            name="currency"
+                            label="Currency $"
+                            mask="currency"
                           />
-                        </Grid>
-                        <Grid item xs={3}>
-                          <Tooltip title="Tooltip">
-                            <MuiButton>Tooltip</MuiButton>
-                          </Tooltip>
-                        </Grid>
+                        </GridItem>
+                        <GridItem item xs={3}>
+                          <Input
+                            name="percentage"
+                            label="Percentage %"
+                            mask="percentage"
+                          />
+                        </GridItem>
                       </Grid>
-                      <Divider />
+                      <Grid container spacing={2} alignItems="center">
+                        <GridItem item xs={6}>
+                          <Autocomplete
+                            name="skills"
+                            multiple
+                            options={options}
+                            getOptionLabel={(option) => option.label}
+                            isOptionEqualToValue={(option, value) =>
+                              option.label === value.label
+                            }
+                            renderInput={(props) => (
+                              <Input name="skills" label="Skills" {...props} />
+                            )}
+                          />
+                        </GridItem>
+                        <GridItem item xs={3}>
+                          <Select
+                            name="creditcard"
+                            label="Credit Card"
+                            options={selectOptions}
+                          />
+                        </GridItem>
+                        <GridItem item xs={3}>
+                          <DatePicker name="date" label="Date" />
+                        </GridItem>
+                      </Grid>
+                      <Grid container spacing={4}>
+                        <GridItem item xs={12}>
+                          <CheckboxGroup
+                            name="items"
+                            label="Items"
+                            options={checkBoxItems}
+                          />
+                        </GridItem>
+                      </Grid>
+                      <Grid container spacing={4}>
+                        <GridItem item xs={3}>
+                          <Switch name="active" label="Active" size="medium" />
+                        </GridItem>
+                      </Grid>
+                      <CardActions>
+                        <Button
+                          type="submit"
+                          color="primary"
+                          startIcon={<Check />}
+                        >
+                          Save
+                        </Button>
+                      </CardActions>
                     </Stack>
-                  </TabPanel>
-                </Tabs>
-              </Grid>
-            </Grid>
+                  </Form>
+                </Card>
+              </TabPanel>
+              <TabPanel value={tabIndex} index={1}>
+                <Stack gap={5}>
+                  <Grid container spacing={4} alignItems="center">
+                    <GridItem item xs={3}>
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                        onClick={() =>
+                          snackbarNotify({
+                            message: "this is a success message",
+                            severity: "success",
+                          })
+                        }
+                      >
+                        Open Snackbar
+                      </Button>
+                      <Snackbar />
+                    </GridItem>
+                    <GridItem item xs={3}>
+                      <Chip label="Success" color="success" size="small" />
+                    </GridItem>
+                    <GridItem item xs={3}>
+                      <InputSpinner
+                        value={quantity}
+                        onChange={handleInputSpinnerChange}
+                      />
+                    </GridItem>
+                    <GridItem item xs={3}>
+                      <Tooltip title="Tooltip">
+                        <Button>Tooltip</Button>
+                      </Tooltip>
+                    </GridItem>
+                  </Grid>
+                  <Divider />
+                </Stack>
+              </TabPanel>
+            </Tabs>
           </Stack>
         </Container>
       </ThemeProvider>

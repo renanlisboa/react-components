@@ -20,7 +20,7 @@ export function TabPanel({ value, index, children, ...rest }: TabPanelProps) {
         aria-labelledby={`full-width-tab-${index}`}
         {...rest}
       >
-        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+        {value === index && <Box>{children}</Box>}
       </div>
     </Fade>
   );
