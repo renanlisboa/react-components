@@ -16,7 +16,7 @@ $ npm install
 $ yarn dev
 
 # npm
-$ npm dev
+$ npm run dev
 ```
 
 ## License
