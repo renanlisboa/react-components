@@ -34,10 +34,7 @@ export function Autocomplete({
           options={options}
           renderInput={renderInput}
           getOptionLabel={getOptionLabel}
-          onChange={(_, data) => {
-            onChange(data);
-            return data;
-          }}
+          onChange={(_, data) => onChange(data)}
           defaultValue={multiple ? [] : undefined}
           clearText="Remove Selection"
           closeText="Close"
