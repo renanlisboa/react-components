@@ -1,9 +1,4 @@
-import { 
-  ReactNode, 
-  useState, 
-  createContext, 
-  useContext 
-} from "react";
+import { ReactNode, useState, createContext, useContext } from "react";
 
 type SnackbarProviderProps = {
   children: ReactNode;
@@ -36,27 +31,9 @@ export function SnackbarProvider({ children }: SnackbarProviderProps) {
   };
 
   const snackbarNotify = ({ message, severity }: SnackbarNotifyProps) => {
-    switch (severity) {
-      case "error":
-        setSnackbarSeverity(severity);
-        setSnackbarMessage(message);
-        setSnackbarOpen(true);
-        break;
-      case "warning":
-        setSnackbarSeverity(severity);
-        setSnackbarMessage(message);
-        setSnackbarOpen(true);
-        break;
-      case "info":
-        setSnackbarSeverity(severity);
-        setSnackbarMessage(message);
-        setSnackbarOpen(true);
-        break;
-      default:
-        setSnackbarSeverity(severity);
-        setSnackbarMessage(message);
-        setSnackbarOpen(true);
-    }
+    setSnackbarSeverity(severity);
+    setSnackbarMessage(message);
+    setSnackbarOpen(true);
   };
 
   return (
