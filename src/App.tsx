@@ -7,11 +7,10 @@ import {
   createTheme,
   Container,
 } from "@mui/material";
-import { Check, AccessAlarm } from "@mui/icons-material";
+import { Check } from "@mui/icons-material";
 
 import { useSnackbarContext } from "./contexts";
 import {
-  Box,
   Stack,
   Grid,
   GridItem,
