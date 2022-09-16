@@ -10,8 +10,6 @@ import {
 } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
-import { CardProduto } from ".";
-
 type CheckBoxGroupProps = {
   name: string;
   label: string;
@@ -21,9 +19,6 @@ type CheckBoxGroupProps = {
 type Option = {
   id: number | string;
   label: string;
-  price?: string;
-  promoPrice?: string;
-  image?: string;
 };
 
 export const CheckboxGroup = ({
@@ -60,7 +55,7 @@ export const CheckboxGroup = ({
       <FormLabel component="legend">{label}</FormLabel>
       <FormGroup sx={{ mt: 2 }}>
         <Stack direction="row" gap={6} flexWrap="wrap">
-          {options.map((option: Option) => {
+          {options.map((option) => {
             return (
               <FormControlLabel
                 key={option.id}
