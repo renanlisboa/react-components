@@ -20,7 +20,7 @@ import {
   Text,
   Form,
   Input,
-  InputSpinner,
+  QuantitySpinner,
   Select,
   Autocomplete,
   DatePicker,
@@ -99,7 +99,7 @@ const App: React.FC = () => {
     return items;
   }
 
-  function handleInputSpinnerChange(value: number) {
+  function handleQuantitySpinnerChange(value: number) {
     setQuantity(value);
   }
 
@@ -268,9 +268,9 @@ const App: React.FC = () => {
                       <Snackbar />
                     </GridItem>
                     <GridItem xs={3}>
-                      <InputSpinner
+                      <QuantitySpinner
                         value={quantity}
-                        onChange={handleInputSpinnerChange}
+                        onChange={handleQuantitySpinnerChange}
                       />
                     </GridItem>
                     <GridItem xs={3}>

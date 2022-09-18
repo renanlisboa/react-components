@@ -4,7 +4,7 @@ import { Add, Remove } from "@mui/icons-material";
 
 import { Box, Tooltip, IconButton, Text } from ".";
 
-type InputSpinnerProps = {
+type QuantitySpinnerProps = {
   color?:
     | "inherit"
     | "primary"
@@ -18,23 +18,23 @@ type InputSpinnerProps = {
   value: number;
 };
 
-export function InputSpinner({
+export function QuantitySpinner({
   onChange,
   value = 1,
   color,
-}: InputSpinnerProps) {
+}: QuantitySpinnerProps) {
   const { palette } = useTheme();
-  const [inputValue, setInputValue] = useState(value);
+  const [quantity, setQuantity] = useState(value);
 
-  const handleIncreaseValue = () => {
-    setInputValue((prevState) => prevState + 1);
-    onChange(inputValue + 1);
+  const handleIncreaseQuantity = () => {
+    setQuantity((prevState) => prevState + 1);
+    onChange(quantity + 1);
   };
 
-  const handleDecreaseValue = () => {
-    if (inputValue === 1) return;
-    setInputValue((prevState) => prevState - 1);
-    onChange(inputValue - 1);
+  const handleDecreaseQuantity = () => {
+    if (quantity === 1) return;
+    setQuantity((prevState) => prevState - 1);
+    onChange(quantity - 1);
   };
 
   return (
@@ -48,15 +48,15 @@ export function InputSpinner({
       gap={2}
     >
       <Tooltip title="Remove" arrow>
-        <IconButton color={color ?? "primary"} onClick={handleDecreaseValue}>
+        <IconButton color={color ?? "primary"} onClick={handleDecreaseQuantity}>
           <Remove titleAccess="Remove" fontSize="small" />
         </IconButton>
       </Tooltip>
       <Text variant="body2" textAlign="center" width={24}>
-        {inputValue}
+        {quantity}
       </Text>
       <Tooltip title="Add" arrow>
-        <IconButton color={color ?? "primary"} onClick={handleIncreaseValue}>
+        <IconButton color={color ?? "primary"} onClick={handleIncreaseQuantity}>
           <Add titleAccess="Add" fontSize="small" />
         </IconButton>
       </Tooltip>

@@ -8,7 +8,7 @@ export * from "./Heading";
 export * from "./Text";
 export * from "./Form";
 export * from "./Input";
-export * from "./InputSpinner";
+export * from "./QuantitySpinner";
 export * from "./Select";
 export * from "./Autocomplete";
 export * from "./DatePicker";
