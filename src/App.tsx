@@ -38,7 +38,7 @@ import { getCustomTheme } from "./styles";
 type FormData = {
   name: string;
   email: string;
-  currency: number | string;
+  currency: string;
   percentage: number | string;
   creditcard: string;
   skills: string[];
@@ -103,7 +103,6 @@ const App: React.FC = () => {
   }
 
   function handleSubmit(data: FormData) {
-    setTabIndex(1);
     console.log(data);
   }
 

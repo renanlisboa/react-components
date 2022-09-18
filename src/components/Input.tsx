@@ -1,4 +1,4 @@
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, ChangeEvent } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import {
   TextField,
@@ -58,6 +58,15 @@ export function Input({
     }
   };
 
+  const convertCurrencyToNumberString = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    if (mask != "currency") return event;
+    const floatValue = String(event.target.value).replaceAll(",", "");
+    event.target.value = floatValue;
+    return event;
+  };
+
   return (
     <Controller
       name={name}
@@ -66,7 +75,7 @@ export function Input({
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <TextField
           value={value}
-          onChange={onChange}
+          onChange={(event) => onChange(convertCurrencyToNumberString(event))}
           onFocus={() => setShrink(true)}
           onBlur={() => !value && setShrink(false)}
           variant={variant}
@@ -82,17 +91,22 @@ export function Input({
   );
 }
 
+const formatCurrency = (value: string) => {
+  const currency = value
+    .replace(/(\d)(\d{2})$/, "$1.$2")
+    .replace(/(?=(\d{3})+(\D))\B/g, ",");
+  return currency;
+};
+
+const formatPercentage = (value: string) => {
+  const percentage = value.replace(/(\d)(\d{2})$/, "$1.$2");
+  return percentage;
+};
+
 const CurrencyFormatInput = forwardRef(
   (props: InputBaseComponentProps | any, ref) => {
     return (
-      <NumberFormat
-        {...props}
-        getInputRef={ref}
-        thousandSeparator={"."}
-        decimalSeparator={","}
-        decimalScale={2}
-        fixedDecimalScale
-      />
+      <NumberFormat {...props} getInputRef={ref} format={formatCurrency} />
     );
   }
 );
@@ -100,13 +114,7 @@ const CurrencyFormatInput = forwardRef(
 const PercentageFormatInput = forwardRef(
   (props: InputBaseComponentProps | any, ref) => {
     return (
-      <NumberFormat
-        {...props}
-        getInputRef={ref}
-        decimalSeparator={"."}
-        decimalScale={2}
-        fixedDecimalScale
-      />
+      <NumberFormat {...props} getInputRef={ref} format={formatPercentage} />
     );
   }
 );
