@@ -29,6 +29,7 @@ import {
   Chip,
   Divider,
   Button,
+  Tooltip,
   Snackbar,
   Tabs,
   TabPanel,
@@ -251,7 +252,7 @@ const App: React.FC = () => {
               <TabPanel value={tabIndex} index={1}>
                 <Stack gap={5}>
                   <Grid container spacing={4} alignItems="center">
-                    <GridItem item xs={4}>
+                    <GridItem item xs={3}>
                       <Button
                         variant="outlined"
                         color="primary"
@@ -266,14 +267,19 @@ const App: React.FC = () => {
                       </Button>
                       <Snackbar />
                     </GridItem>
-                    <GridItem item xs={4}>
+                    <GridItem item xs={3}>
                       <InputSpinner
                         value={quantity}
                         onChange={handleInputSpinnerChange}
                       />
                     </GridItem>
-                    <GridItem item xs={4}>
+                    <GridItem item xs={3}>
                       <Chip label="Success" color="success" size="small" />
+                    </GridItem>
+                    <GridItem item xs={3}>
+                      <Tooltip title="Tooltip">
+                        <Button variant="text">Tooltip</Button>
+                      </Tooltip>
                     </GridItem>
                   </Grid>
                   <Divider />
