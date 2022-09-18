@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState, useMemo } from "react";
 import { ptBR } from "@mui/material/locale";
 import * as yup from "yup";
 import {
@@ -46,48 +46,44 @@ type FormData = {
   email: string;
   currency: string;
   percentage: number | string;
-  creditcard: string;
-  skills: Option[];
+  select: string;
+  autocomplete: Option[];
   items: Option[];
   date: string | null;
-  active: boolean;
+  switch: boolean;
 };
 
+const FormDataSchema = yup.object({
+  name: yup.string().required("name is required"),
+  email: yup.string().email("invalid email").required("email is required"),
+  currency: yup.string().required("currency is required"),
+  percentage: yup.string().required("percentage is required"),
+  select: yup.string().required("select is required"),
+  autocomplete: yup
+    .array()
+    .min(2, "select at least 2 skills")
+    .required("autocomplete are required"),
+  items: yup
+    .array()
+    .min(1, "select at least 1 item")
+    .required("items are required"),
+  date: yup.date().typeError("date is required"),
+  switch: yup.boolean().required("switch is required"),
+});
+
 const App: React.FC = () => {
+  const { snackbarNotify } = useSnackbarContext();
   const [themeMode, setThemeMode] = useState<"light" | "dark">("light");
   const [quantity, setQuantity] = useState(1);
   const [tabIndex, setTabIndex] = useState(0);
-  const { snackbarNotify } = useSnackbarContext();
+  const selectOptions = ["Item 1", "Item 2", "Item 3", "Item 4"];
+  const options = useMemo(() => createItems(4), []);
+  const theme = useMemo(
+    () => createTheme(getCustomTheme(themeMode), ptBR),
+    [themeMode]
+  );
 
-  const FormDataSchema = yup.object({
-    name: yup.string().required("name is required"),
-    email: yup.string().email("invalid email").required("email is required"),
-    currency: yup.string().required("currency is required"),
-    percentage: yup.string().required("percentage is required"),
-    creditcard: yup.string().required("creditcard is required"),
-    skills: yup
-      .array()
-      .min(2, "select at least 2 skills")
-      .required("skills are required"),
-    items: yup
-      .array()
-      .min(1, "select at least 1 item")
-      .required("items are required"),
-    date: yup.date().typeError("date is required"),
-    active: yup.boolean().required("active is required"),
-  });
-
-  const selectOptions = ["Mastercard", "Visa", "American Express", "Dinners"];
-  const options = [
-    { id: 1, label: "Typescript" },
-    { id: 2, label: "React" },
-    { id: 3, label: "NextJS" },
-    { id: 4, label: "NodeJS" },
-  ];
-
-  const checkBoxItems = createCheckboxItems(3);
-
-  function createCheckboxItems(length: number): Option[] {
+  function createItems(length: number): Option[] {
     let items = [];
     for (let i = 1; i <= length; i++) {
       const object = {
@@ -106,10 +102,6 @@ const App: React.FC = () => {
   function handleSubmit(data: FormData) {
     console.log(data);
   }
-
-  const theme = useMemo(() => {
-    return createTheme(getCustomTheme(themeMode), ptBR);
-  }, [themeMode]);
 
   return (
     <>
@@ -199,7 +191,7 @@ const App: React.FC = () => {
                       <Grid container spacing={2} alignItems="center">
                         <GridItem xs={6}>
                           <Autocomplete
-                            name="skills"
+                            name="autocomplete"
                             multiple
                             options={options}
                             getOptionLabel={(option) => option.label}
@@ -207,14 +199,18 @@ const App: React.FC = () => {
                               option.label === value.label
                             }
                             renderInput={(props) => (
-                              <Input name="skills" label="Skills" {...props} />
+                              <Input
+                                name="autocomplete"
+                                label="Autocomplete"
+                                {...props}
+                              />
                             )}
                           />
                         </GridItem>
                         <GridItem xs={3}>
                           <Select
-                            name="creditcard"
-                            label="Credit Card"
+                            name="select"
+                            label="Select"
                             options={selectOptions}
                           />
                         </GridItem>
@@ -227,13 +223,13 @@ const App: React.FC = () => {
                           <CheckboxGroup
                             name="items"
                             label="Items"
-                            options={checkBoxItems}
+                            options={options}
                           />
                         </GridItem>
                       </Grid>
                       <Grid container spacing={4}>
                         <GridItem xs={3}>
-                          <Switch name="active" label="Active" size="medium" />
+                          <Switch name="switch" label="Switch" size="medium" />
                         </GridItem>
                       </Grid>
                       <CardActions>
