@@ -175,20 +175,20 @@ const App: React.FC = () => {
                   >
                     <Stack gap={4}>
                       <Grid container spacing={2}>
-                        <GridItem item xs={3}>
+                        <GridItem xs={3}>
                           <Input name="name" label="Name" />
                         </GridItem>
-                        <GridItem item xs={3}>
+                        <GridItem xs={3}>
                           <Input id="email" name="email" label="E-mail" />
                         </GridItem>
-                        <GridItem item xs={3}>
+                        <GridItem xs={3}>
                           <Input
                             name="currency"
                             label="Currency $"
                             mask="currency"
                           />
                         </GridItem>
-                        <GridItem item xs={3}>
+                        <GridItem xs={3}>
                           <Input
                             name="percentage"
                             label="Percentage %"
@@ -197,7 +197,7 @@ const App: React.FC = () => {
                         </GridItem>
                       </Grid>
                       <Grid container spacing={2} alignItems="center">
-                        <GridItem item xs={6}>
+                        <GridItem xs={6}>
                           <Autocomplete
                             name="skills"
                             multiple
@@ -211,19 +211,19 @@ const App: React.FC = () => {
                             )}
                           />
                         </GridItem>
-                        <GridItem item xs={3}>
+                        <GridItem xs={3}>
                           <Select
                             name="creditcard"
                             label="Credit Card"
                             options={selectOptions}
                           />
                         </GridItem>
-                        <GridItem item xs={3}>
+                        <GridItem xs={3}>
                           <DatePicker name="date" label="Date" />
                         </GridItem>
                       </Grid>
                       <Grid container spacing={4}>
-                        <GridItem item xs={12}>
+                        <GridItem xs={12}>
                           <CheckboxGroup
                             name="items"
                             label="Items"
@@ -232,7 +232,7 @@ const App: React.FC = () => {
                         </GridItem>
                       </Grid>
                       <Grid container spacing={4}>
-                        <GridItem item xs={3}>
+                        <GridItem xs={3}>
                           <Switch name="active" label="Active" size="medium" />
                         </GridItem>
                       </Grid>
@@ -252,7 +252,7 @@ const App: React.FC = () => {
               <TabPanel value={tabIndex} index={1}>
                 <Stack gap={5}>
                   <Grid container spacing={4} alignItems="center">
-                    <GridItem item xs={3}>
+                    <GridItem xs={3}>
                       <Button
                         variant="outlined"
                         color="primary"
@@ -267,16 +267,16 @@ const App: React.FC = () => {
                       </Button>
                       <Snackbar />
                     </GridItem>
-                    <GridItem item xs={3}>
+                    <GridItem xs={3}>
                       <InputSpinner
                         value={quantity}
                         onChange={handleInputSpinnerChange}
                       />
                     </GridItem>
-                    <GridItem item xs={3}>
+                    <GridItem xs={3}>
                       <Chip label="Success" color="success" size="small" />
                     </GridItem>
-                    <GridItem item xs={3}>
+                    <GridItem xs={3}>
                       <Tooltip title="Tooltip">
                         <Button variant="text">Tooltip</Button>
                       </Tooltip>
