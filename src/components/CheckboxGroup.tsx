@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  Stack,
   Checkbox,
   FormControl,
   FormControlLabel,
@@ -9,6 +8,8 @@ import {
   FormLabel,
 } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
+
+import { Stack } from '.'
 
 type CheckBoxGroupProps = {
   name: string;
@@ -21,11 +22,7 @@ type Option = {
   label: string;
 };
 
-export const CheckboxGroup = ({
-  name,
-  label,
-  options,
-}: CheckBoxGroupProps) => {
+export const CheckboxGroup = ({ name, label, options }: CheckBoxGroupProps) => {
   const {
     control,
     setValue,

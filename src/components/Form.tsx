@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import { ObjectSchema } from 'yup';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ObjectSchema } from "yup";
 
 type FormProps = {
   children: ReactNode;
@@ -10,7 +10,7 @@ type FormProps = {
 };
 
 export function Form({ validationSchema, onSubmit, children }: FormProps) {
-  const useFormMethods = useForm({ resolver: yupResolver(validationSchema) })
+  const useFormMethods = useForm({ resolver: yupResolver(validationSchema) });
   const { handleSubmit } = useFormMethods;
 
   return (

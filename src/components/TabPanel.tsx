@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Fade } from '@mui/material'
+import { Fade } from "@mui/material";
 
 import { Box } from ".";
 

@@ -1,4 +1,3 @@
-import { Controller, useFormContext } from "react-hook-form";
 import {
   FormControl,
   InputLabel,
@@ -7,6 +6,7 @@ import {
   SelectProps as MuiSelectProps,
   FormHelperText,
 } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 
 type SelectProps = MuiSelectProps & {
   name: string;
@@ -31,11 +31,7 @@ export function Select({
       defaultValue=""
       render={({ field, fieldState: { error } }) => (
         <FormControl fullWidth style={{ marginTop: error ? 0 : 4 }}>
-          <InputLabel
-            id="select-label"
-            htmlFor={name}
-            error={!!error}
-          >
+          <InputLabel id="select-label" htmlFor={name} error={!!error}>
             {label}
           </InputLabel>
           <MuiSelect

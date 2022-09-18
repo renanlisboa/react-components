@@ -1,4 +1,3 @@
-import { Controller, useFormContext } from "react-hook-form";
 import {
   FormControl,
   FormControlLabel,
@@ -6,6 +5,7 @@ import {
   Switch as MuiSwitch,
   SwitchProps as MuiSwitchProps,
 } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 
 type SwitchProps = MuiSwitchProps & {
   controlled?: boolean;
@@ -24,10 +24,7 @@ export function Switch({
       <FormControlLabel
         label={label}
         control={
-          <MuiSwitch 
-            inputProps={{ "aria-label": "Switch" }} 
-            {...rest} 
-          />
+          <MuiSwitch inputProps={{ "aria-label": "Switch" }} {...rest} />
         }
       />
     );

@@ -1,10 +1,12 @@
 import { Tabs as MuiTabs, Tab, TabsProps as MuiTabsProps } from "@mui/material";
 
+type TabList = {
+  tabLabel: string;
+  tabIndex: number;
+};
+
 type TabsProps = MuiTabsProps & {
-  tabList: Array<{
-    tabLabel: string;
-    tabIndex: number;
-  }>;
+  tabList: TabList[];
   labelTextTransform?: "uppercase" | "capitalize" | "none";
 };
 
@@ -27,11 +29,11 @@ export function Tabs({
         {...rest}
       >
         {tabList.map(({ tabLabel, tabIndex }) => (
-          <Tab 
+          <Tab
             sx={{ textTransform: labelTextTransform }}
-            key={tabIndex} 
-            label={tabLabel} 
-            {...a11yProps(tabIndex)} 
+            key={tabIndex}
+            label={tabLabel}
+            {...a11yProps(tabIndex)}
           />
         ))}
       </MuiTabs>
