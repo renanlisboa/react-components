@@ -1,20 +1,15 @@
+import { forwardRef } from "react";
 import { Button as MuiButton, ButtonProps } from "@mui/material";
 
-export const Button = ({
-  variant,
-  color,
-  size,
-  children,
-  ...rest
-}: ButtonProps) => {
-  return (
-    <MuiButton
-      variant={variant ?? "contained"}
-      color={color ?? "primary"}
-      size={size ?? "large"}
-      {...rest}
-    >
-      {children}
-    </MuiButton>
-  );
-};
+export const Button = forwardRef(
+  (
+    { variant = "contained", size = "large", children, ...rest }: ButtonProps,
+    ref
+  ) => {
+    return (
+      <MuiButton ref={ref as any} variant={variant} size={size} {...rest}>
+        {children}
+      </MuiButton>
+    );
+  }
+);
