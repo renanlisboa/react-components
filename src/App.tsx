@@ -36,21 +36,21 @@ import {
 } from "./components";
 import { getCustomTheme } from "./styles";
 
+type Option = {
+  id: number;
+  label: string;
+};
+
 type FormData = {
   name: string;
   email: string;
   currency: string;
   percentage: number | string;
   creditcard: string;
-  skills: string[];
-  items: CheckboxItem[];
+  skills: Option[];
+  items: Option[];
   date: string | null;
   active: boolean;
-};
-
-type CheckboxItem = {
-  id: number;
-  label: string;
 };
 
 const App: React.FC = () => {
@@ -87,7 +87,7 @@ const App: React.FC = () => {
 
   const checkBoxItems = createCheckboxItems(3);
 
-  function createCheckboxItems(length: number): CheckboxItem[] {
+  function createCheckboxItems(length: number): Option[] {
     let items = [];
     for (let i = 1; i <= length; i++) {
       const object = {
