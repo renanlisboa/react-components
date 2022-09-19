@@ -218,7 +218,7 @@ const App: React.FC = () => {
                           <DatePicker name="date" label="Date" />
                         </GridItem>
                       </Grid>
-                      <Grid container spacing={4}>
+                      <Grid container spacing={2}>
                         <GridItem xs={12}>
                           <CheckboxGroup
                             name="items"
@@ -227,7 +227,7 @@ const App: React.FC = () => {
                           />
                         </GridItem>
                       </Grid>
-                      <Grid container spacing={4}>
+                      <Grid container spacing={2}>
                         <GridItem xs={3}>
                           <Switch name="switch" label="Switch" size="medium" />
                         </GridItem>
@@ -247,7 +247,7 @@ const App: React.FC = () => {
               </TabPanel>
               <TabPanel value={tabIndex} index={1}>
                 <Stack gap={5}>
-                  <Grid container spacing={4} alignItems="center">
+                  <Grid container spacing={2} alignItems="center">
                     <GridItem xs={3}>
                       <Button
                         variant="outlined"
