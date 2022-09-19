@@ -62,7 +62,7 @@ export function Input({
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     if (mask != "currency") return event;
-    const floatValue = String(event.target.value).replaceAll(",", "");
+    const floatValue = event.target.value.replaceAll(",", "");
     event.target.value = floatValue;
     return event;
   };
