@@ -16,9 +16,7 @@ jobs:
       # - name: Install Yarn
       #   run: npm install -g yarn
       - name: Build app
-        run: |
-          npm ci
-          yarn build
+        run: yarn build
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
