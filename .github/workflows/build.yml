@@ -15,8 +15,8 @@ jobs:
           node-version: '16.x'
       - name: Install Vite
         run: |
-          yarn add vite
-          @vitejs/plugin-react
+          yarn add vite -D
+          yarn add @vitejs/plugin-react -D
       - name: Build App
         run: yarn build
       - name: Deploy to gh-pages
