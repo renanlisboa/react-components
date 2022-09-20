@@ -13,9 +13,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-      # - name: Install Yarn
-      #   run: npm install -g yarn
-      - name: Build app
+      - name: Install Vite
+        run: |
+          yarn add vite
+          @vitejs/plugin-react
+      - name: Build App
         run: yarn build
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
