@@ -234,12 +234,11 @@ const App: React.FC = () => {
                       </Grid>
                       <CardActions>
                         <Button
+                          label="Save"
                           type="submit"
                           color="primary"
                           startIcon={<Check />}
-                        >
-                          Save
-                        </Button>
+                        />
                       </CardActions>
                     </Stack>
                   </Form>
@@ -250,6 +249,7 @@ const App: React.FC = () => {
                   <Grid container spacing={2} alignItems="center">
                     <GridItem xs={3}>
                       <Button
+                        label="Open Snackbar"
                         variant="outlined"
                         color="primary"
                         onClick={() =>
@@ -258,9 +258,7 @@ const App: React.FC = () => {
                             severity: "success",
                           })
                         }
-                      >
-                        Open Snackbar
-                      </Button>
+                      />
                       <Snackbar />
                     </GridItem>
                     <GridItem xs={3}>
@@ -274,7 +272,7 @@ const App: React.FC = () => {
                     </GridItem>
                     <GridItem xs={3}>
                       <Tooltip title="Tooltip">
-                        <Button variant="text">Tooltip</Button>
+                        <Button label="Tooltip" variant="text" />
                       </Tooltip>
                     </GridItem>
                   </Grid>
