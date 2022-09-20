@@ -2,6 +2,7 @@
   "name": "react-components",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://renanlisboa.github.io/react-components",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
