@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { ptBR } from "@mui/material/locale";
+import { enUS } from "@mui/material/locale";
 import * as yup from "yup";
 import {
   ThemeProvider,
@@ -62,7 +62,7 @@ const FormDataSchema = yup.object({
   autocomplete: yup
     .array()
     .min(2, "select at least 2 skills")
-    .required("autocomplete are required"),
+    .required("autocomplete is required"),
   items: yup
     .array()
     .min(1, "select at least 1 item")
@@ -76,10 +76,20 @@ const App: React.FC = () => {
   const [themeMode, setThemeMode] = useState<"light" | "dark">("light");
   const [quantity, setQuantity] = useState(1);
   const [tabIndex, setTabIndex] = useState(0);
+  const tabList = [
+    {
+      tabLabel: "Form Components",
+      tabIndex: 1,
+    },
+    {
+      tabLabel: "Other Components",
+      tabIndex: 2,
+    },
+  ]
   const selectOptions = ["Item 1", "Item 2", "Item 3", "Item 4"];
   const options = useMemo(() => createItems(4), []);
   const theme = useMemo(
-    () => createTheme(getCustomTheme(themeMode), ptBR),
+    () => createTheme(getCustomTheme(themeMode), enUS),
     [themeMode]
   );
 
@@ -133,7 +143,7 @@ const App: React.FC = () => {
                   </Text>
                 </Stack>
               </Card>
-              <Card bgColor="primary" title="Card 2">
+              <Card title="Card 2" bgColor="primary">
                 <Stack gap={2}>
                   <Heading variant="h6">Title 2</Heading>
                   <Text>
@@ -145,16 +155,7 @@ const App: React.FC = () => {
               </Card>
             </Stack>
             <Tabs
-              tabList={[
-                {
-                  tabLabel: "Form Components",
-                  tabIndex: 1,
-                },
-                {
-                  tabLabel: "Other Components",
-                  tabIndex: 2,
-                },
-              ]}
+              tabList={tabList}
               labelTextTransform="uppercase"
               onChange={(_, newValue) => setTabIndex(newValue)}
               value={tabIndex}
@@ -171,7 +172,7 @@ const App: React.FC = () => {
                           <Input name="name" label="Name" />
                         </GridItem>
                         <GridItem xs={3}>
-                          <Input id="email" name="email" label="E-mail" />
+                          <Input name="email" label="E-mail" />
                         </GridItem>
                         <GridItem xs={3}>
                           <Input
